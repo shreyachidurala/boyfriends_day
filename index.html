@@ -1,0 +1,2087 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+ 
+<title>Our Little Story ♡</title> 
+ 
+<style> 
+ 
+*{ 
+  box-sizing:border-box; 
+  -webkit-tap-highlight-color:transparent; 
+} 
+ 
+html,body{ 
+  margin:0; 
+  padding:0; 
+  width:100%; 
+  min-height:100%; 
+} 
+ 
+body{ 
+  font-family:Georgia,serif; 
+  overflow-x:hidden; 
+  background:#111; 
+} 
+ 
+/* ========================= 
+   MAIN BACKGROUND 
+========================= */ 
+ 
+.app{ 
+  min-height:100vh; 
+ 
+  background: 
+    repeating-linear-gradient( 
+      0deg, 
+      #fff7b5 0px, 
+      #fff7b5 18px, 
+      #c8f1ff 18px, 
+      #c8f1ff 36px 
+    ); 
+ 
+  color:#222; 
+} 
+ 
+/* ========================= 
+   PAGES 
+========================= */ 
+ 
+.page{ 
+  display:none; 
+ 
+  min-height:100vh; 
+ 
+  padding:35px 20px 110px; 
+ 
+  position:relative; 
+ 
+  overflow:hidden; 
+} 
+ 
+.page.active{ 
+  display:block; 
+} 
+ 
+.page-number{ 
+  text-align:center; 
+ 
+  color:#e91e63; 
+ 
+  font-family:Arial,sans-serif; 
+ 
+  font-size:20px; 
+ 
+  font-weight:bold; 
+ 
+  margin-bottom:15px; 
+} 
+ 
+/* ========================= 
+   TEXT 
+========================= */ 
+ 
+.title{ 
+  text-align:center; 
+ 
+  color:#e91e63; 
+ 
+  font-family:"Brush Script MT", 
+              "Segoe Script", 
+              cursive; 
+ 
+  font-size:clamp(40px,8vw,70px); 
+ 
+  margin:10px 0; 
+} 
+ 
+.subtitle{ 
+  text-align:center; 
+ 
+  font-size:20px; 
+ 
+  max-width:700px; 
+ 
+  margin:10px auto 30px; 
+} 
+ 
+.editable{ 
+  outline:none; 
+ 
+  cursor:text; 
+} 
+ 
+.editable:focus{ 
+  box-shadow:0 2px 0 #e91e63; 
+} 
+ 
+/* ========================= 
+   NAVIGATION 
+========================= */ 
+ 
+.navigation{ 
+  position:fixed; 
+ 
+  bottom:0; 
+  left:0; 
+ 
+  width:100%; 
+ 
+  height:85px; 
+ 
+  display:flex; 
+ 
+  justify-content:center; 
+ 
+  align-items:center; 
+ 
+  gap:18px; 
+ 
+  z-index:999; 
+} 
+ 
+.nav-btn{ 
+  border:none; 
+ 
+  background:#f50057; 
+ 
+  color:white; 
+ 
+  font-size:17px; 
+ 
+  font-weight:bold; 
+ 
+  padding:14px 27px; 
+ 
+  border-radius:40px; 
+ 
+  box-shadow:0 5px 0 #c51155; 
+ 
+  cursor:pointer; 
+} 
+ 
+.nav-btn:active{ 
+  transform:translateY(3px); 
+ 
+  box-shadow:0 2px 0 #c51155; 
+} 
+ 
+.nav-btn:disabled{ 
+  opacity:.4; 
+} 
+ 
+/* ========================= 
+   PAGE 1 
+   ONE CLEAN HEART 
+========================= */ 
+ 
+.cover{ 
+  min-height:calc(100vh - 100px); 
+ 
+  display:flex; 
+ 
+  flex-direction:column; 
+ 
+  justify-content:center; 
+ 
+  align-items:center; 
+ 
+  text-align:center; 
+} 
+ 
+.heart-wrap{ 
+ 
+  width:min(430px,85vw); 
+ 
+  aspect-ratio:1/0.92; 
+ 
+  position:relative; 
+ 
+  margin:10px auto 15px; 
+ 
+  filter: 
+    drop-shadow( 
+      0 12px 8px rgba(0,0,0,.15) 
+    ); 
+} 
+ 
+/* 
+   THIS IS ONE SINGLE HEART 
+*/ 
+ 
+.heart{ 
+ 
+  position:absolute; 
+ 
+  inset:0; 
+ 
+  background:#f50057; 
+ 
+  clip-path:polygon( 
+    50% 92%, 
+    42% 84%, 
+    32% 76%, 
+    22% 67%, 
+    14% 57%, 
+    8% 47%, 
+    6% 36%, 
+    8% 25%, 
+    15% 17%, 
+    24% 12%, 
+    34% 12%, 
+    42% 17%, 
+    50% 26%, 
+    58% 17%, 
+    66% 12%, 
+    76% 12%, 
+    85% 17%, 
+    92% 25%, 
+    94% 36%, 
+    92% 47%, 
+    86% 57%, 
+    78% 67%, 
+    68% 76%, 
+    58% 84% 
+  ); 
+ 
+  display:flex; 
+ 
+  justify-content:center; 
+ 
+  align-items:center; 
+} 
+ 
+.heart-text{ 
+ 
+  color:white; 
+ 
+  font-family: 
+    "Brush Script MT", 
+    "Segoe Script", 
+    cursive; 
+ 
+  font-size:clamp( 
+    30px, 
+    6vw, 
+    55px 
+  ); 
+ 
+  line-height:1; 
+ 
+  text-align:center; 
+ 
+  transform:translateY(-5px); 
+ 
+  z-index:2; 
+} 
+ 
+.cover-title{ 
+ 
+  color:#e91e63; 
+ 
+  font-family: 
+    "Brush Script MT", 
+    "Segoe Script", 
+    cursive; 
+ 
+  font-size: 
+    clamp(45px,8vw,75px); 
+ 
+  margin:5px 0; 
+} 
+ 
+/* ========================= 
+   PHOTO INPUT 
+========================= */ 
+ 
+.file-input{ 
+  display:none; 
+} 
+ 
+/* ========================= 
+   POLAROIDS 
+========================= */ 
+ 
+.polaroid-grid{ 
+ 
+  display:grid; 
+ 
+  grid-template-columns: 
+    repeat(2,1fr); 
+ 
+  gap:25px; 
+ 
+  max-width:900px; 
+ 
+  margin:35px auto; 
+} 
+ 
+.polaroid{ 
+ 
+  background:white; 
+ 
+  padding:14px 14px 45px; 
+ 
+  min-height:330px; 
+ 
+  box-shadow: 
+    0 10px 20px 
+    rgba(0,0,0,.16); 
+ 
+  position:relative; 
+ 
+  overflow:hidden; 
+ 
+  transform:rotate(-2deg); 
+} 
+ 
+.polaroid:nth-child(2){ 
+  transform:rotate(2deg); 
+} 
+ 
+.polaroid:nth-child(3){ 
+  transform:rotate(1deg); 
+} 
+ 
+.polaroid:nth-child(4){ 
+  transform:rotate(-1deg); 
+} 
+ 
+/* POLKA DOTS */ 
+ 
+.polaroid:after{ 
+ 
+  content:""; 
+ 
+  position:absolute; 
+ 
+  inset:0; 
+ 
+  pointer-events:none; 
+ 
+  opacity:.22; 
+ 
+  background-image: 
+    radial-gradient( 
+      #e91e63 2px, 
+      transparent 2px 
+    ); 
+ 
+  background-size:20px 20px; 
+} 
+ 
+.photo-box{ 
+ 
+  position:relative; 
+ 
+  z-index:2; 
+ 
+  width:100%; 
+ 
+  height:270px; 
+ 
+  background:#f5f5f5; 
+ 
+  display:flex; 
+ 
+  justify-content:center; 
+ 
+  align-items:center; 
+ 
+  overflow:hidden; 
+ 
+  cursor:pointer; 
+} 
+ 
+.photo-box img{ 
+ 
+  width:100%; 
+ 
+  height:100%; 
+ 
+  object-fit:cover; 
+ 
+  display:block; 
+ 
+  border:0; 
+} 
+ 
+/* Page 2 polaroids: images are placed directly in HTML */ 
+.polaroid .photo-box{ 
+  cursor:default; 
+} 
+ 
+.polaroid .photo-box img{ 
+  display:block; 
+} 
+ 
+.collage-card img{ 
+ 
+  width:100%; 
+ 
+  height:100%; 
+ 
+  object-fit:cover; 
+ 
+  display:none; 
+ 
+  border:0; 
+} 
+ 
+.photo-placeholder{ 
+ 
+  color:#e91e63; 
+ 
+  font-size:24px; 
+ 
+  font-weight:bold; 
+ 
+  text-align:center; 
+} 
+ 
+.polaroid-caption{ 
+ 
+  position:absolute; 
+ 
+  bottom:9px; 
+ 
+  left:0; 
+ 
+  right:0; 
+ 
+  text-align:center; 
+ 
+  font-family: 
+    "Brush Script MT", 
+    "Segoe Script", 
+    cursive; 
+ 
+  font-size:25px; 
+ 
+  color:#222; 
+ 
+  z-index:3; 
+} 
+ 
+/* ========================= 
+   PAGE 3 
+========================= */ 
+ 
+.song-layout{ 
+ 
+  min-height:600px; 
+ 
+  max-width:1000px; 
+ 
+  margin:auto; 
+ 
+  position:relative; 
+ 
+  display:grid; 
+ 
+  grid-template-columns:1fr 1fr; 
+ 
+  align-items:center; 
+ 
+  gap:20px; 
+} 
+ 
+/* VINYL */ 
+ 
+.vinyl-area{ 
+ 
+  min-height:560px; 
+ 
+  position:relative; 
+ 
+  display:flex; 
+ 
+  align-items:center; 
+ 
+  justify-content:center; 
+ 
+  overflow:hidden; 
+} 
+ 
+.vinyl{ 
+ 
+  width:560px; 
+ 
+  height:560px; 
+ 
+  border-radius:50%; 
+ 
+  position:absolute; 
+ 
+  left:-170px; 
+ 
+  background: 
+    repeating-radial-gradient( 
+      circle, 
+      #050505 0px, 
+      #111 4px, 
+      #050505 8px 
+    ); 
+ 
+  box-shadow: 
+    0 15px 30px 
+    rgba(0,0,0,.3); 
+ 
+  display:flex; 
+ 
+  justify-content:center; 
+ 
+  align-items:center; 
+} 
+ 
+.vinyl:before{ 
+ 
+  content:""; 
+ 
+  width:145px; 
+ 
+  height:145px; 
+ 
+  border-radius:50%; 
+ 
+  background:#f50057; 
+ 
+  border:8px solid #111; 
+ 
+  box-shadow: 
+    inset 0 0 0 5px white; 
+} 
+ 
+.vinyl:after{ 
+ 
+  content:""; 
+ 
+  position:absolute; 
+ 
+  width:9px; 
+ 
+  height:9px; 
+ 
+  background:white; 
+ 
+  border-radius:50%; 
+} 
+ 
+.vinyl.playing{ 
+ 
+  animation: 
+    spin 3s linear infinite; 
+} 
+ 
+@keyframes spin{ 
+ 
+  from{ 
+    transform:rotate(0deg); 
+  } 
+ 
+  to{ 
+    transform:rotate(360deg); 
+  } 
+ 
+} 
+ 
+/* ========================= 
+   SONG PHOTOS 
+========================= */ 
+ 
+.song-photo-grid{ 
+ 
+  display:grid; 
+ 
+  grid-template-columns: 
+    repeat(2,1fr); 
+ 
+  gap:20px; 
+ 
+  position:relative; 
+ 
+  z-index:5; 
+} 
+ 
+.song-photo{ 
+ 
+  background:white; 
+ 
+  padding:9px; 
+ 
+  height:190px; 
+ 
+  box-shadow: 
+    0 8px 18px 
+    rgba(0,0,0,.2); 
+} 
+ 
+.song-photo .photo-box{ 
+ 
+  height:172px; 
+} 
+ 
+.song-photo:nth-child(1){ 
+  transform:rotate(-5deg); 
+} 
+ 
+.song-photo:nth-child(2){ 
+  transform:rotate(5deg); 
+} 
+ 
+.song-photo:nth-child(3){ 
+  transform:rotate(3deg); 
+} 
+ 
+.song-photo:nth-child(4){ 
+  transform:rotate(-4deg); 
+} 
+ 
+/* ========================= 
+   SONG CONTROLS 
+========================= */ 
+ 
+.song-panel{ 
+ 
+  text-align:center; 
+ 
+  padding:20px; 
+} 
+ 
+.add-song{ 
+ 
+  border:none; 
+ 
+  background:#f50057; 
+ 
+  color:white; 
+ 
+  padding:16px 25px; 
+ 
+  border-radius:30px; 
+ 
+  font-size:18px; 
+ 
+  font-weight:bold; 
+ 
+  cursor:pointer; 
+ 
+  box-shadow: 
+    0 5px 0 #c51155; 
+} 
+ 
+.song-name{ 
+ 
+  color:#e91e63; 
+ 
+  font-family: 
+    "Brush Script MT", 
+    "Segoe Script", 
+    cursive; 
+ 
+  font-size:30px; 
+ 
+  margin:20px 0; 
+} 
+ 
+.play-btn{ 
+ 
+  width:70px; 
+ 
+  height:70px; 
+ 
+  border:none; 
+ 
+  border-radius:50%; 
+ 
+  background:#f50057; 
+ 
+  color:white; 
+ 
+  font-size:18px; 
+ 
+  cursor:pointer; 
+ 
+  box-shadow: 
+    0 5px 0 #c51155; 
+} 
+ 
+.song-message{ 
+ 
+  font-family: 
+    "Brush Script MT", 
+    "Segoe Script", 
+    cursive; 
+ 
+  font-size:27px; 
+ 
+  line-height:1.4; 
+ 
+  margin-top:25px; 
+} 
+ 
+audio{ 
+  display:none; 
+} 
+ 
+/* ========================= 
+   PAGE 4 
+========================= */ 
+ 
+.moments{ 
+ 
+  display:grid; 
+ 
+  grid-template-columns: 
+    repeat(4,1fr); 
+ 
+  gap:20px; 
+ 
+  max-width:1000px; 
+ 
+  margin:40px auto; 
+} 
+ 
+.mini-polaroid{ 
+ 
+  background:white; 
+ 
+  padding:12px 12px 38px; 
+ 
+  box-shadow: 
+    0 9px 18px 
+    rgba(0,0,0,.15); 
+ 
+  position:relative; 
+ 
+  min-height:290px; 
+} 
+ 
+.mini-polaroid:nth-child(odd){ 
+  transform:rotate(-3deg); 
+} 
+ 
+.mini-polaroid:nth-child(even){ 
+  transform:rotate(3deg); 
+} 
+ 
+.mini-polaroid .photo-box{ 
+  height:225px; 
+} 
+ 
+.mini-caption{ 
+ 
+  position:absolute; 
+ 
+  bottom:7px; 
+ 
+  left:0; 
+ 
+  right:0; 
+ 
+  text-align:center; 
+ 
+  font-family: 
+    "Brush Script MT", 
+    "Segoe Script", 
+    cursive; 
+ 
+  font-size:23px; 
+} 
+ 
+/* ========================= 
+   PAGE 5 
+========================= */ 
+ 
+.letter{ 
+ 
+  max-width:800px; 
+ 
+  margin:40px auto; 
+ 
+  background:#fffdf4; 
+ 
+  padding:45px; 
+ 
+  box-shadow: 
+    0 12px 25px 
+    rgba(0,0,0,.15); 
+ 
+  font-size:20px; 
+ 
+  line-height:1.8; 
+ 
+  text-align:left; 
+} 
+ 
+.letter-title{ 
+ 
+  text-align:center; 
+ 
+  color:#e91e63; 
+ 
+  font-family: 
+    "Brush Script MT", 
+    "Segoe Script", 
+    cursive; 
+ 
+  font-size:42px; 
+} 
+ 
+/* ========================= 
+   PAGE 6 
+========================= */ 
+ 
+.collage{ 
+ 
+  max-width:900px; 
+ 
+  height:560px; 
+ 
+  margin:30px auto; 
+ 
+  position:relative; 
+} 
+ 
+.collage-card{ 
+ 
+  position:absolute; 
+ 
+  background:white; 
+ 
+  padding:10px; 
+ 
+  box-shadow: 
+    0 10px 20px 
+    rgba(0,0,0,.18); 
+} 
+ 
+.collage-card img{ 
+  width:100%; 
+  height:100%; 
+  object-fit:cover; 
+  display:block; 
+  border:0; 
+} 
+ 
+.c1{ 
+ 
+  width:250px; 
+  height:300px; 
+ 
+  left:3%; 
+  top:8%; 
+ 
+  transform:rotate(-6deg); 
+} 
+ 
+.c2{ 
+ 
+  width:280px; 
+  height:200px; 
+ 
+  left:35%; 
+  top:4%; 
+ 
+  transform:rotate(3deg); 
+} 
+ 
+.c3{ 
+ 
+  width:250px; 
+  height:300px; 
+ 
+  right:3%; 
+  top:12%; 
+ 
+  transform:rotate(6deg); 
+} 
+ 
+.c4{ 
+ 
+  width:280px; 
+  height:200px; 
+ 
+  left:32%; 
+  bottom:2%; 
+ 
+  transform:rotate(-4deg); 
+} 
+ 
+.collage-note{ 
+ 
+  position:absolute; 
+ 
+  left:40%; 
+  top:45%; 
+ 
+  z-index:10; 
+ 
+  background:#f50057; 
+ 
+  color:white; 
+ 
+  padding:15px 22px; 
+ 
+  font-family: 
+    "Brush Script MT", 
+    "Segoe Script", 
+    cursive; 
+ 
+  font-size:27px; 
+ 
+  transform:rotate(-5deg); 
+} 
+ 
+/* ========================= 
+   PAGE 7 
+========================= */ 
+ 
+.end{ 
+ 
+  min-height:75vh; 
+ 
+  display:flex; 
+ 
+  flex-direction:column; 
+ 
+  justify-content:center; 
+ 
+  align-items:center; 
+ 
+  text-align:center; 
+} 
+ 
+.big-heart{ 
+ 
+  font-size:130px; 
+ 
+  color:#f50057; 
+} 
+ 
+.end-title{ 
+ 
+  color:#e91e63; 
+ 
+  font-family: 
+    "Brush Script MT", 
+    "Segoe Script", 
+    cursive; 
+ 
+  font-size: 
+    clamp(45px,8vw,80px); 
+} 
+ 
+/* ========================= 
+   MOBILE 
+========================= */ 
+ 
+@media(max-width:750px){ 
+ 
+  .page{ 
+    padding: 
+      28px 12px 100px; 
+  } 
+ 
+  .polaroid-grid{ 
+    display:grid; 
+    grid-template-columns:repeat(2,1fr); 
+    gap:18px; 
+    padding:15px 4px 30px; 
+    width:100%; 
+    overflow:visible; 
+  } 
+ 
+  .polaroid{ 
+    width:100%; 
+    min-width:0; 
+    flex:none; 
+    scroll-snap-align:none; 
+  } 
+ 
+  .song-layout{ 
+ 
+    display:block; 
+ 
+    min-height:680px; 
+  } 
+ 
+  .vinyl-area{ 
+ 
+    min-height:430px; 
+  } 
+ 
+  .vinyl{ 
+ 
+    width:450px; 
+ 
+    height:450px; 
+ 
+    left:-250px; 
+  } 
+ 
+  .song-photo-grid{ 
+ 
+    width:62%; 
+ 
+    margin-left:auto; 
+ 
+    margin-right:0; 
+ 
+    gap:12px; 
+  } 
+ 
+  .song-photo{ 
+ 
+    height:145px; 
+ 
+    padding:7px; 
+  } 
+ 
+  .song-photo .photo-box{ 
+ 
+    height:131px; 
+  } 
+ 
+  .song-panel{ 
+ 
+    position:relative; 
+ 
+    margin-top:-20px; 
+ 
+    z-index:20; 
+  } 
+ 
+  .things-grid{ 
+ 
+    grid-template-columns:1fr; 
+  } 
+ 
+  .moments{ 
+    display:grid; 
+    grid-template-columns:repeat(2,1fr); 
+    gap:18px; 
+    padding:10px 4px; 
+    width:100%; 
+    overflow:visible; 
+  } 
+ 
+  .mini-polaroid{ 
+    width:100%; 
+    min-width:0; 
+    flex:none; 
+    scroll-snap-align:none; 
+  } 
+ 
+  .letter{ 
+ 
+    padding:30px 22px; 
+  } 
+ 
+  .collage{ 
+ 
+    height:500px; 
+  } 
+ 
+  .c1{ 
+ 
+    width:165px; 
+    height:220px; 
+  } 
+ 
+  .c2{ 
+ 
+    width:190px; 
+    height:140px; 
+ 
+    left:30%; 
+  } 
+ 
+  .c3{ 
+ 
+    width:165px; 
+    height:220px; 
+  } 
+ 
+  .c4{ 
+ 
+    width:190px; 
+    height:140px; 
+ 
+    left:25%; 
+  } 
+ 
+  .collage-note{ 
+ 
+    font-size:21px; 
+  } 
+ 
+  .nav-btn{ 
+ 
+    padding: 
+      13px 22px; 
+ 
+    font-size:16px; 
+  } 
+ 
+} 
+ 
+</style> 
+</head> 
+ 
+<body> 
+ 
+<div class="app"> 
+ 
+<!-- ===================================================== 
+     PAGE 1 
+===================================================== --> 
+ 
+<section class="page active" id="page1"> 
+ 
+  <div class="page-number"> 
+    1 / 7 
+  </div> 
+ 
+  <div class="cover"> 
+ 
+    <!-- ONE SINGLE HEART --> 
+ 
+    <div class="heart-wrap"> 
+ 
+      <div class="heart"> 
+ 
+        <div 
+          class="heart-text editable" 
+          contenteditable="true"> 
+ 
+          Happy<br> 
+          Boyfriend's Day 
+ 
+        </div> 
+ 
+      </div> 
+ 
+    </div> 
+ 
+    <h1 
+      class="cover-title editable" 
+      contenteditable="true"> 
+ 
+      Our Little Story 
+ 
+    </h1> 
+ 
+    <p 
+      class="subtitle editable" 
+      contenteditable="true"> 
+ 
+      A tiny collection of our favourite memories ♡ 
+ 
+    </p> 
+ 
+  </div> 
+ 
+</section> 
+ 
+ 
+<!-- ===================================================== 
+     PAGE 2 
+===================================================== --> 
+ 
+<section class="page" id="page2"> 
+ 
+  <div class="page-number"> 
+    2 / 7 
+  </div> 
+ 
+  <h1 
+    class="title editable" 
+    contenteditable="true"> 
+ 
+    My Boy ♡ 
+ 
+  </h1> 
+ 
+  <p 
+    class="subtitle editable" 
+    contenteditable="true"> 
+ 
+    
+ 
+  </p> 
+ 
+ 
+  <div class="polaroid-grid"> 
+ 
+    <div class="polaroid"> 
+ 
+      <div class="photo-box"> 
+        <!-- Put your image file name in src below --> 
+        <img src="photo.1.jpeg" alt="Memory photo 1" onerror="this.style.visibility='hidden'"> 
+      </div> 
+ 
+      <div class="polaroid-caption"> 
+        ♡ 
+      </div> 
+ 
+    </div> 
+ 
+    <div class="polaroid"> 
+ 
+      <div class="photo-box"> 
+        <!-- Put your image file name in src below --> 
+        <img src="photo.2.jpeg" alt="Memory photo 2" onerror="this.style.visibility='hidden'"> 
+      </div> 
+ 
+      <div class="polaroid-caption"> 
+        ♡ 
+      </div> 
+ 
+    </div> 
+ 
+    <div class="polaroid"> 
+ 
+      <div class="photo-box"> 
+        <!-- Put your image file name in src below --> 
+        <img src="photo.3.jpeg" alt="Memory photo 3" onerror="this.style.visibility='hidden'"> 
+      </div> 
+ 
+      <div class="polaroid-caption"> 
+        ♡ 
+      </div> 
+ 
+    </div> 
+ 
+    <div class="polaroid"> 
+ 
+      <div class="photo-box"> 
+        <!-- Put your image file name in src below --> 
+        <img src="photo.4.jpeg" alt="Memory photo 4" onerror="this.style.visibility='hidden'"> 
+      </div> 
+ 
+      <div class="polaroid-caption"> 
+        ♡ 
+      </div> 
+ 
+    </div> 
+ 
+  </div> 
+ 
+</section> 
+ 
+ 
+<!-- ===================================================== 
+     PAGE 3 
+===================================================== --> 
+ 
+<section class="page" id="page3"> 
+ 
+  <div class="page-number"> 
+    3 / 7 
+  </div> 
+ 
+  <h1 
+    class="title editable" 
+    contenteditable="true"> 
+ 
+    Our Song ♡ 
+ 
+  </h1> 
+ 
+  <p 
+    class="subtitle editable" 
+    contenteditable="true"> 
+ 
+  
+ 
+  </p> 
+ 
+ 
+  <div class="song-layout"> 
+ 
+ 
+    <div class="vinyl-area"> 
+ 
+      <div 
+        class="vinyl" 
+        id="vinyl"> 
+      </div> 
+ 
+    </div> 
+ 
+ 
+    <div class="song-photo-grid"> 
+ 
+ 
+      <div 
+        class="song-photo"> 
+ 
+        <div class="photo-box"> 
+ 
+          <img src="fotu.6.jpeg" alt="Song memory photo 1"> 
+ 
+        </div> 
+ 
+      </div> 
+ 
+ 
+      <div 
+        class="song-photo"> 
+ 
+        <div class="photo-box"> 
+ 
+          <img src="fotu.10.jpeg" alt="Song memory photo 2"> 
+ 
+        </div> 
+ 
+      </div> 
+ 
+ 
+      <div 
+        class="song-photo"> 
+ 
+        <div class="photo-box"> 
+ 
+          <img src="fotu.18.jpeg" alt="Song memory photo 3"> 
+ 
+        </div> 
+ 
+      </div> 
+ 
+ 
+      <div 
+        class="song-photo"> 
+ 
+        <div class="photo-box"> 
+ 
+          <img src="fotu.17.jpeg" alt="Song memory photo 4"> 
+ 
+        </div> 
+ 
+      </div> 
+ 
+ 
+    </div> 
+ 
+ 
+    <div class="song-panel"> 
+ 
+      <button 
+        class="add-song" 
+        onclick="document.getElementById('audioInput').click()"> 
+ 
+       can't help falling in love
+ 
+      </button> 
+ 
+      <input 
+        id="audioInput" 
+        class="file-input" 
+        type="file" 
+        accept="audio/*" 
+        onchange="loadAudio(event)"> 
+
+ 
+      <button 
+        class="play-btn" 
+        id="playButton" 
+        onclick="toggleAudio()"> 
+ 
+        ▶ 
+ 
+      </button> 
+ 
+      <p 
+        class="song-message editable" 
+        contenteditable="true"> 
+ 
+        This song reminds me of you... ♡ 
+ 
+      </p> 
+ 
+      <audio id="audio" src="can help.mp3" preload="metadata"></audio> 
+ 
+    </div> 
+ 
+  </div> 
+ 
+</section> 
+ 
+<!-- ===================================================== 
+     PAGE 4 
+===================================================== --> 
+ 
+<section class="page" id="page4"> 
+ 
+  <div class="page-number"> 
+    4 / 7 
+  </div> 
+ 
+  <h1 
+    class="title editable" 
+    contenteditable="true"> 
+ 
+    More Little Moments ♡ 
+ 
+  </h1> 
+ 
+  <p 
+    class="subtitle editable" 
+    contenteditable="true"> 
+ 
+    The moments I want to keep forever 
+ 
+  </p> 
+ 
+ 
+  <div class="moments"> 
+ 
+ 
+    <!-- MOMENT 1 --> 
+ 
+    <div class="mini-polaroid"> 
+ 
+      <div 
+        class="photo-box"> 
+ 
+        <img src="fotu.7.jpeg" alt="Little moment photo 1"> 
+ 
+      </div> 
+ 
+      <div 
+        class="mini-caption editable" 
+        contenteditable="true"> 
+ 
+        Our little moment ♡ 
+ 
+      </div> 
+ 
+    </div> 
+ 
+ 
+    <!-- MOMENT 2 --> 
+ 
+    <div class="mini-polaroid"> 
+ 
+      <div 
+        class="photo-box"> 
+ 
+        <img src="fotu.11.jpeg" alt="Little moment photo 2"> 
+ 
+      </div> 
+ 
+      <div 
+        class="mini-caption editable" 
+        contenteditable="true"> 
+ 
+        My favourite ♡ 
+ 
+      </div> 
+ 
+    </div> 
+ 
+ 
+    <!-- MOMENT 3 --> 
+ 
+    <div class="mini-polaroid"> 
+ 
+      <div 
+        class="photo-box"> 
+ 
+        <img src="fotu.5.jpeg" alt="Little moment photo 3"> 
+ 
+      </div> 
+ 
+      <div 
+        class="mini-caption editable" 
+        contenteditable="true"> 
+ 
+        Forever ♡ 
+ 
+      </div> 
+ 
+    </div> 
+ 
+ 
+    <!-- MOMENT 4 --> 
+ 
+    <div class="mini-polaroid"> 
+ 
+      <div 
+        class="photo-box"> 
+ 
+        <img src="fotu.14.jpeg" alt="Little moment photo 4"> 
+ 
+      </div> 
+ 
+      <div 
+        class="mini-caption editable" 
+        contenteditable="true"> 
+ 
+        This one ♡ 
+ 
+      </div> 
+ 
+    </div> 
+ 
+  </div> 
+ 
+</section> 
+ 
+ 
+<!-- ===================================================== 
+     PAGE 5 
+===================================================== --> 
+ 
+<section class="page" id="page5"> 
+ 
+  <div class="page-number"> 
+    5 / 7 
+  </div> 
+ 
+  <h1 
+    class="title editable" 
+    contenteditable="true"> 
+ 
+    A Little Letter ♡ 
+ 
+  </h1> 
+ 
+ 
+  <div class="letter"> 
+ 
+    <div class="letter-title editable" 
+         contenteditable="true"> 
+ 
+      To my favourite person... 
+ 
+    </div> 
+ 
+ 
+    <p 
+      class="editable" 
+      contenteditable="true"> 
+ 
+      Dear love, 
+ 
+    </p> 
+ 
+ 
+    <p 
+      class="editable" 
+      contenteditable="true"> 
+ 
+      Happy Boyfriend’s Day to my favourite person. I honestly don’t know what I would do without you. You’ve become such an important part of my life, I’m so grateful for every little moment, every laugh, every conversation and even the silly fights we have. You have this way of making me feel loved and special without even trying, and that means more to me than you know. I may not always say it perfectly but I love you so much and I’m really lucky to call you mine. 
+ 
+    </p> 
+ 
+ 
+    <p 
+      class="editable" 
+      contenteditable="true"> 
+ 
+      And honestly, some of my favourite things about us are all those little moments that only we understand — our stupid inside jokes, random conversations, laughing over things that wouldn’t even make sense to anyone else and all the memories we’ve made together. I love how even the smallest moments with you somehow become my favourite memories. From our silly teasing to those late-night talks and the little things you do that I secretly adore, everything feels so much more special because it’s with you. I hope we keep making a million more memories and having jokes that nobody else will ever understand. 
+ 
+    </p> 
+ 
+ 
+    <p 
+      class="editable" 
+      contenteditable="true" 
+      style="text-align:right"> 
+ 
+      With love ♡ 
+ 
+    </p> 
+ 
+  </div> 
+ 
+</section> 
+ 
+ 
+<!-- ===================================================== 
+     PAGE 6 
+===================================================== --> 
+ 
+<section class="page" id="page6"> 
+ 
+  <div class="page-number"> 
+    6 / 7 
+  </div> 
+ 
+  <h1 
+    class="title editable" 
+    contenteditable="true"> 
+ 
+    Our Memories ♡ 
+ 
+  </h1> 
+ 
+  <p 
+    class="subtitle editable" 
+    contenteditable="true"> 
+ 
+    A little collection of us 
+ 
+  </p> 
+ 
+ 
+  <div class="collage"> 
+ 
+ 
+    <!-- COLLAGE PHOTO 1 --> 
+ 
+    <div 
+      class="collage-card c1 "> 
+ 
+      <img src="fotu.13.jpeg" alt="Our memory collage photo 1"> 
+ 
+    </div> 
+ 
+ 
+    <!-- COLLAGE PHOTO 2 --> 
+ 
+    <div 
+      class="collage-card c2"> 
+ 
+      <img src="fotu.8.jpeg" alt="Our memory collage photo 2"> 
+ 
+    </div> 
+ 
+ 
+    <!-- COLLAGE PHOTO 3 --> 
+ 
+    <div 
+      class="collage-card c3"> 
+ 
+      <img src="fotu.16.jpeg" alt="Our memory collage photo 3"> 
+ 
+    </div> 
+ 
+ 
+    <!-- COLLAGE PHOTO 4 --> 
+ 
+    <div 
+      class="collage-card c4"> 
+ 
+      <img src="fotu.9.jpeg" alt="Our memory collage photo 4"> 
+ 
+    </div> 
+ 
+ 
+    <div 
+      class="collage-note editable" 
+      contenteditable="true"> 
+ 
+      our favourite memories ♡ 
+ 
+    </div> 
+ 
+  </div> 
+ 
+</section> 
+ 
+ 
+<!-- ===================================================== 
+     PAGE 7 
+===================================================== --> 
+ 
+<section class="page" id="page7"> 
+ 
+  <div class="page-number"> 
+    7 / 7 
+  </div> 
+ 
+ 
+  <div class="end"> 
+ 
+    <div class="big-heart"> 
+      ♡ 
+    </div> 
+ 
+ 
+    <h1 
+      class="end-title editable" 
+      contenteditable="true"> 
+ 
+      Until the next memory... 
+ 
+    </h1> 
+ 
+ 
+    <p 
+      class="subtitle editable" 
+      contenteditable="true"> 
+ 
+      Here's to all the little moments 
+      still waiting for us ♡ 
+ 
+    </p> 
+ 
+  </div> 
+ 
+</section> 
+ 
+ 
+<!-- ===================================================== 
+     NAVIGATION 
+===================================================== --> 
+ 
+<div class="navigation"> 
+ 
+  <button 
+    class="nav-btn" 
+    id="backBtn" 
+    onclick="previousPage()"> 
+ 
+    ← Back 
+ 
+  </button> 
+ 
+ 
+  <button 
+    class="nav-btn" 
+    id="nextBtn" 
+    onclick="nextPage()"> 
+ 
+    Next → 
+ 
+  </button> 
+ 
+</div> 
+<script> 
+ 
+/* ===================================================== 
+   PAGE NAVIGATION 
+===================================================== */ 
+ 
+let currentPage = 1; 
+ 
+const totalPages = 7; 
+ 
+function showPage(page){ 
+ 
+  if(page < 1){ 
+    page = 1; 
+  } 
+ 
+  if(page > totalPages){ 
+    page = totalPages; 
+  } 
+ 
+  currentPage = page; 
+ 
+  for(let i = 1; i <= totalPages; i++){ 
+ 
+    const current = 
+      document.getElementById("page" + i); 
+ 
+    if(current){ 
+ 
+      current.classList.remove("active"); 
+ 
+    } 
+ 
+  } 
+ 
+  const selected = 
+    document.getElementById( 
+      "page" + currentPage 
+    ); 
+ 
+  if(selected){ 
+ 
+    selected.classList.add("active"); 
+ 
+  } 
+ 
+  document.getElementById("backBtn").disabled = 
+    currentPage === 1; 
+ 
+  document.getElementById("nextBtn").disabled = 
+    currentPage === totalPages; 
+ 
+  window.scrollTo(0,0); 
+ 
+} 
+ 
+ 
+/* NEXT PAGE */ 
+ 
+function nextPage(){ 
+ 
+  if(currentPage < totalPages){ 
+ 
+    showPage(currentPage + 1); 
+ 
+  } 
+ 
+} 
+ 
+ 
+/* PREVIOUS PAGE */ 
+ 
+function previousPage(){ 
+ 
+  if(currentPage > 1){ 
+ 
+    showPage(currentPage - 1); 
+ 
+  } 
+ 
+} 
+ 
+ 
+/* ===================================================== 
+   ADD SONG 
+===================================================== */ 
+ 
+let audioFileURL = null; 
+ 
+ 
+function loadAudio(event){ 
+ 
+  const file = 
+    event.target.files[0]; 
+ 
+  if(!file){ 
+ 
+    return; 
+ 
+  } 
+ 
+ 
+  const audio = 
+    document.getElementById("audio"); 
+ 
+ 
+  const songName = 
+    document.getElementById("songName"); 
+ 
+ 
+  if(audioFileURL){ 
+ 
+    URL.revokeObjectURL( 
+      audioFileURL 
+    ); 
+ 
+  } 
+ 
+ 
+  audioFileURL = 
+    URL.createObjectURL(file); 
+ 
+ 
+  audio.src = 
+    audioFileURL; 
+ 
+ 
+  songName.textContent = 
+    file.name; 
+ 
+ 
+  songName.setAttribute( 
+    "contenteditable", 
+    "true" 
+  ); 
+ 
+} 
+ 
+ 
+/* ===================================================== 
+   PLAY / PAUSE SONG 
+===================================================== */ 
+ 
+function toggleAudio(){ 
+ 
+  const audio = 
+    document.getElementById("audio"); 
+ 
+ 
+  const vinyl = 
+    document.getElementById("vinyl"); 
+ 
+ 
+  const button = 
+    document.getElementById("playButton"); 
+ 
+ 
+  if(!audio.src){ 
+ 
+    alert( 
+      "Please add your song first 🎵" 
+    ); 
+ 
+    return; 
+ 
+  } 
+ 
+ 
+  if(audio.paused){ 
+ 
+    audio.play(); 
+ 
+    vinyl.classList.add( 
+      "playing" 
+    ); 
+ 
+    button.textContent = 
+      "Ⅱ"; 
+ 
+  } 
+ 
+  else{ 
+ 
+    audio.pause(); 
+ 
+    vinyl.classList.remove( 
+      "playing" 
+    ); 
+ 
+    button.textContent = 
+      "▶"; 
+ 
+  } 
+ 
+} 
+ 
+ 
+/* When song ends */ 
+ 
+document 
+  .getElementById("audio") 
+  .addEventListener( 
+    "ended", 
+    function(){ 
+ 
+      document 
+        .getElementById("vinyl") 
+        .classList.remove( 
+          "playing" 
+        ); 
+ 
+      document 
+        .getElementById("playButton") 
+        .textContent = "▶"; 
+ 
+    } 
+  ); 
+ 
+ 
+/* ===================================================== 
+   KEYBOARD NAVIGATION 
+===================================================== */ 
+ 
+document.addEventListener( 
+  "keydown", 
+  function(event){ 
+ 
+    /* 
+       Don't change pages while 
+       typing inside editable text. 
+    */ 
+ 
+    if( 
+      event.target.isContentEditable 
+    ){ 
+ 
+      return; 
+ 
+    } 
+ 
+ 
+    if(event.key === "ArrowRight"){ 
+ 
+      nextPage(); 
+ 
+    } 
+ 
+ 
+    if(event.key === "ArrowLeft"){ 
+ 
+      previousPage(); 
+ 
+    } 
+ 
+  } 
+); 
+ 
+ 
+/* ===================================================== 
+   TOUCH SWIPE NAVIGATION 
+===================================================== */ 
+ 
+let touchStartX = 0; 
+ 
+let touchEndX = 0; 
+ 
+ 
+document.addEventListener( 
+  "touchstart", 
+  function(event){ 
+ 
+    touchStartX = 
+      event.changedTouches[0].screenX; 
+ 
+  } 
+); 
+ 
+ 
+document.addEventListener( 
+  "touchend", 
+  function(event){ 
+ 
+    touchEndX = 
+      event.changedTouches[0].screenX; 
+ 
+    handleSwipe(); 
+ 
+  } 
+); 
+ 
+ 
+function handleSwipe(){ 
+ 
+  const difference = 
+    touchStartX - touchEndX; 
+ 
+ 
+  /* 
+     Ignore tiny movements. 
+  */ 
+ 
+  if(Math.abs(difference) < 70){ 
+ 
+    return; 
+ 
+  } 
+ 
+ 
+  if(difference > 0){ 
+ 
+    nextPage(); 
+ 
+  } 
+ 
+  else{ 
+ 
+    previousPage(); 
+ 
+  } 
+ 
+} 
+ 
+ 
+/* ===================================================== 
+   START WEBSITE 
+===================================================== */ 
+ 
+showPage(1); 
+ 
+      </script></div> 
+ 
+</body> 
+</html
